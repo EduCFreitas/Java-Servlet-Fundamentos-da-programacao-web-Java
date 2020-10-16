@@ -6,7 +6,6 @@
 <!-- Importação da taglib para usar o forEach -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<c:url value="/removeEmpresa" var="linkServletRemoveEmpresa"></c:url>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +20,7 @@
 	
 <%-- 	<c:if test="${empty empresa}"> --%>
 <!-- 	<p>Nenhuma empresa cadastrada.</p> -->
-<!-- 	<!-- Pode-se usar um = no local de out.print, assim não precisando do ; --> -->
+	 	<!-- Pode-se usar um = no local de out.print, assim não precisando do ; -->
 <%-- 	</c:if> --%>
 	
 	<p>Lista de empresas:</p>
@@ -30,7 +29,8 @@
 		<c:forEach items="${empresas}" var="empresa">
 			<li>
 				${empresa.id} - ${empresa.nome} - <fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy"/>
-				| <a href="${linkServletRemoveEmpresa}?id=${empresa.id}">Remove</a>
+				| <a href="/gerenciador/mostraEmpresa?id=${empresa.id}">Editar</a>
+				| <a href="/gerenciador/removeEmpresa?id=${empresa.id}">Remover</a>
 			</li>
 		</c:forEach>
 	</ul>
