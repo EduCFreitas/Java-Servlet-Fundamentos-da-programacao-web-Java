@@ -13,7 +13,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>Lista de empresas:</h3>
+	<c:if test="${not empty empresa}">
+	<p>Empresa ${empresa} cadastrada com sucesso!</p>
+	<!-- Pode-se usar um = no local de out.print, assim não precisando do ; -->
+	</c:if>
+	
+	<c:if test="${empty empresa}">
+	<p>Nenhuma empresa cadastrada.</p>
+	<!-- Pode-se usar um = no local de out.print, assim não precisando do ; -->
+	</c:if>
+	
+	<p>Lista de empresas:</p>
 	<ul>
 		<!--  Baixar jstl-1.2.jar e colar em WebContent -> WEB-INF -> lib -->
 		<c:forEach items="${empresas}" var="empresa">
