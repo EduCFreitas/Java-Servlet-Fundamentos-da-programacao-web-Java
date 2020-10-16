@@ -42,10 +42,14 @@ public class NovaEmpresaServlet extends HttpServlet {
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
 		
+		//Devolver resposta ao navegador para que ele realize uma nova requisição
+		response.sendRedirect("listaEmpresas"); //Não usar barra no endereço
+		
 		//Chamando outro servlet
-		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas");
-		request.setAttribute("empresa", empresa.getNome());
-		rd.forward(request, response);
+//		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas"); //Sempre usar barra no endereço
+//		request.setAttribute("empresa", empresa.getNome());
+//		rd.forward(request, response);
+		
 	}
 
 }
