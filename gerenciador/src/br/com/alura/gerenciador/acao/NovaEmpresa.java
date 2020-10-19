@@ -1,34 +1,27 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.acao;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.modelo.Banco;
 import br.com.alura.gerenciador.modelo.Empresa;
 
-/**
- * Servlet implementation class NovaEmpresaServlet
- */
-@WebServlet("/novaEmpresa")
-public class NovaEmpresaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+public class NovaEmpresa {
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Cadastrando nova empresa");
-		
+	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Açõa: Cadastrando nova empresa");
+
 		String nomeEmpresa = request.getParameter("nome");
 		String paramDataEmpresa = request.getParameter("data");
-		
+
 		Date dataAbertura = null;
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -36,23 +29,16 @@ public class NovaEmpresaServlet extends HttpServlet {
 		} catch (ParseException e) {
 			throw new ServletException(e);
 		}
-		
+
 		Empresa empresa = new Empresa();
 		empresa.setNome(nomeEmpresa);
 		empresa.setDataAbertura(dataAbertura);
-		
+
 		//Simulação de banco de dados
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
-		
-		//Devolver resposta ao navegador para que ele realize uma nova requisição
-		response.sendRedirect("listaEmpresas"); //Não usar barra no endereço
-		
-		//Chamando outro servlet
-//		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas"); //Sempre usar barra no endereço
-//		request.setAttribute("empresa", empresa.getNome());
-//		rd.forward(request, response);
-		
-	}
 
+		//Devolver resposta ao navegador para que ele realize uma nova requisição
+		response.sendRedirect("entrada?acao=ListaEmpresas"); //Não usar barra no endereço
+	}
 }
