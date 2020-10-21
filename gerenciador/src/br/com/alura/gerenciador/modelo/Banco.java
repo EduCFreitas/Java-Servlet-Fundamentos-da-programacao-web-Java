@@ -8,6 +8,7 @@ import java.util.List;
 public class Banco {
 	
 	private static List<Empresa> lista = new ArrayList<Empresa>();
+	private static List<Usuario> listaUsuarios = new ArrayList<Usuario>();
 	private static Integer chaveSequencial = 1;
 	
 	//Artimanha para carregar essas duas empresas sempre que o servidor subir
@@ -20,6 +21,15 @@ public class Banco {
 		empresa2.setNome("Caelum");
 		lista.add(empresa);
 		lista.add(empresa2);
+		
+		Usuario u1 = new Usuario();
+		u1.setLogin("edu");
+		u1.setSenha("123");
+		Usuario u2 = new Usuario();
+		u2.setLogin("freitas");
+		u2.setSenha("456");
+		listaUsuarios.add(u1);
+		listaUsuarios.add(u2);
 	}
 
 	public void adiciona(Empresa empresa) {
