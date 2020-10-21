@@ -1,23 +1,17 @@
 package br.com.alura.gerenciador.acao;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.alura.gerenciador.modelo.Banco;
-import br.com.alura.gerenciador.modelo.Empresa;
-
-public class ListaEmpresas {
+public class NovaEmpresaForm {
 
 	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Banco banco = new Banco();
-		List<Empresa> lista = banco.getEmpresas();
+		System.out.println("Ação: Abrindo formulário para cadastro de nova empresa");
 		
-		request.setAttribute("empresas", lista);
+		return "forward:formNovaEmpresa.jsp";
 		
-		return "forward:listaEmpresas.jsp";
 	}
 }
