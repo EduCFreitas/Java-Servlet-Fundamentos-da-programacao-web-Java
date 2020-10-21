@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,8 +14,8 @@ import br.com.alura.gerenciador.modelo.Empresa;
 
 public class NovaEmpresa {
 
-	public void executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Açõa: Cadastrando nova empresa");
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Ação: Cadastrando nova empresa");
 
 		String nomeEmpresa = request.getParameter("nome");
 		String paramDataEmpresa = request.getParameter("data");
@@ -34,11 +32,10 @@ public class NovaEmpresa {
 		empresa.setNome(nomeEmpresa);
 		empresa.setDataAbertura(dataAbertura);
 
-		//Simulação de banco de dados
 		Banco banco = new Banco();
 		banco.adiciona(empresa);
 
-		//Devolver resposta ao navegador para que ele realize uma nova requisição
-		response.sendRedirect("entrada?acao=ListaEmpresas"); //Não usar barra no endereço
+		return "redirect:entrada?acao=ListaEmpresas";
+		
 	}
 }
