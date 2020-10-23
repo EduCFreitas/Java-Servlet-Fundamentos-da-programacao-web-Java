@@ -12,6 +12,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<p>Usuário logado: ${usuarioLogado.login}</p>
+
 	<c:if test="${not empty empresa}">
 	<p>Empresa ${empresa} cadastrada com sucesso!</p>
 	<!-- Pode-se usar um = no local de out.print, assim não precisando do ; -->
