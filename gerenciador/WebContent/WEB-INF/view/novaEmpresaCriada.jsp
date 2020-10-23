@@ -9,6 +9,8 @@ System.out.println(nomeEmpresa);
 
 <html>
 <body>
+	<c:import url="logout-parcial.jsp"></c:import>
+
 	<c:if test="${not empty empresa}">
 	Empresa ${empresa} cadastrada com sucesso!
 	<!-- Pode-se usar um = no local de out.print, assim não precisando do ; -->
